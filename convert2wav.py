@@ -66,3 +66,4 @@ for file in os.listdir(path_in):
         sound = pydub.AudioSegment.from_mp3(path_in + file) #load mp3 file
         sound.export(path_out_48+file.replace('.mp3','.wav'), format="wav") #export to wav file
         downsampleWav(path_out_48+file.replace('.mp3','.wav'), path_out_16 + file.replace('.mp3','.wav'),48000,16000,1,1) #downsample wav file to samplerate you want...
+        #os.remove(path_out_48+file.replace('.mp3','.wav')) #remove file in wav48 folder if full disk
