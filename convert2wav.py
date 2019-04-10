@@ -60,10 +60,10 @@ def downsampleWav(src, dst, inrate=48000, outrate=16000, inchannels=1, outchanne
 path_in_mp3 = 'D:\\ASR\\dataset ASR\\FPT data\\FPTOpenSpeechData_Set002_V0.1\\FPTOpenSpeechData_Set002_Part2_V0.1\\mp3\\' #path to folder mp3 files
 path_out_48 = 'D:\\ASR\\dataset ASR\FPT data\\FPTOpenSpeechData_Set002_V0.1\\FPTOpenSpeechData_Set002_Part2_V0.1\\wav48\\' #path to folder wav files (converted to wav but not downsample, samplerate = sample rate mp3 file)
 path_out_16 = 'D:\\ASR\\dataset ASR\\FPT data\\FPTOpenSpeechData_Set002_V0.1\\FPTOpenSpeechData_Set002_Part2_V0.1\\wav\\' #path to folder wav files (converted to wav and downsample, samplerate = outrate)
-for file in os.listdir(path_in):
+for file in os.listdir(path_in_mp3):
     if file.endswith(".mp3"):
         print(file)
-        sound = pydub.AudioSegment.from_mp3(path_in + file) #load mp3 file
+        sound = pydub.AudioSegment.from_mp3(path_in_mp3 + file) #load mp3 file
         sound.export(path_out_48+file.replace('.mp3','.wav'), format="wav") #export to wav file
         downsampleWav(path_out_48+file.replace('.mp3','.wav'), path_out_16 + file.replace('.mp3','.wav'),48000,16000,1,1) #downsample wav file to samplerate you want...
         #os.remove(path_out_48+file.replace('.mp3','.wav')) #remove file in wav48 folder if full disk
